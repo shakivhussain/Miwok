@@ -7,9 +7,9 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/numbersActiviyt"
         android:layout_width="match_parent"
         android:layout_height="90dp"
-        android:id="@+id/numbersActiviyt"
         android:background="@color/category_numbers"
         android:gravity="start|center_vertical"
         android:paddingLeft="18dp"
@@ -19,6 +19,7 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/familyActiviyt"
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:background="@color/category_family"
@@ -30,6 +31,7 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/colorsActiviyt"
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:background="@color/category_colors"
@@ -41,6 +43,7 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/phrasesActiviyt"
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:background="@color/category_phrases"
