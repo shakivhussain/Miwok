@@ -1,8 +1,12 @@
 package com.shakibmansoori.miwok;
 
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
+import java.util.ArrayList;
 
 public class NumbersActivity extends AppCompatActivity {
 
@@ -12,18 +16,22 @@ public class NumbersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_numbers);
 
 
-        String[] words = new String[];
+        ArrayList<String> words = new ArrayList<String>();
 
-        words[0] = "one";
-        words[1] = "two";
-        words[2] = "three";
-        words[3] = "four";
-        words[4] = "five";
-        words[5] = "six";
-        words[6] = "seven";
-        words[7] = "eight";
-        words[8] = "nine";
-        words[9] = "ten";
+        words.add("one");
+        words.add("two");
+        words.add("three");
+        words.add("four");
+        words.add("five");
+        words.add("six");
+        words.add("seven");
+        words.add("eight");
+        words.add("nine");
+        words.add("ten");
 
+        ListView listView = findViewById(R.id.numberListV);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, words);
+        listView.setAdapter(adapter);
     }
 }
