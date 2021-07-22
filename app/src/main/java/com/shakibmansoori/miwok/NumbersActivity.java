@@ -16,22 +16,19 @@ public class NumbersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_numbers);
 
 
-        ArrayList<String> words = new ArrayList<String>();
+        ArrayList<Words> words = new ArrayList<Words>();
 
-        words.add("one");
-        words.add("two");
-        words.add("three");
-        words.add("four");
-        words.add("five");
-        words.add("six");
-        words.add("seven");
-        words.add("eight");
-        words.add("nine");
-        words.add("ten");
+        words.add(new Words("One", "Lutti"));
+        words.add(new Words("One", "Lutti"));
+        words.add(new Words("One", "Lutti"));
+        words.add(new Words("One", "Lutti"));
+        words.add(new Words("One", "Lutti"));
+        words.add(new Words("One", "Lutti"));
 
         ListView listView = findViewById(R.id.numberListV);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, words);
+        // we cant implement custom arraylist to the default adapter , so create custom arraAdapter
+        WordsAdapter adapter = new WordsAdapter(this, words);
         listView.setAdapter(adapter);
     }
 }
