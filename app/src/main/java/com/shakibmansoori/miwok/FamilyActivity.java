@@ -1,5 +1,7 @@
 package com.shakibmansoori.miwok;
 
+import android.content.Context;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +15,26 @@ import java.util.ArrayList;
 public class FamilyActivity extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
 
+    private AudioManager mAudioManager;
+    AudioManager.OnAudioFocusChangeListener afChangeListener = new AudioManager.OnAudioFocusChangeListener() {
+        @Override
+        public void onAudioFocusChange(int focusChange) {
+            if (focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT ||
+                    focusChange == AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK) {
+                //pause playback
+                mediaPlayer.pause();
+                mediaPlayer.seekTo(0);
+            } else if (focusChange == AudioManager.AUDIOFOCUS_GAIN) {
+                //resume playback
+                mediaPlayer.start();
+            } else if (focusChange == AudioManager.AUDIOFOCUS_LOSS) {
+
+                //stop playback
+                releaseMediaPlayer();
+            }
+        }
+    };
+
     private MediaPlayer.OnCompletionListener onCompletionListener = new MediaPlayer.OnCompletionListener() {
         @Override
         public void onCompletion(MediaPlayer mp) {
@@ -24,7 +46,7 @@ public class FamilyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.words_list);
-
+        mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
         final ArrayList<Words> words = new ArrayList<Words>();
 
@@ -60,6 +82,7 @@ public class FamilyActivity extends AppCompatActivity {
         if (mediaPlayer != null) {
             mediaPlayer.release();
             mediaPlayer = null;
+            mAudioManager.abandonAudioFocus(afChangeListener);
         }
     }
 
