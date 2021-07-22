@@ -1,9 +1,9 @@
 package com.shakibmansoori.miwok;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.ListView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
@@ -17,14 +17,14 @@ public class ColorsActivity extends AppCompatActivity {
 
         ArrayList<Words> words = new ArrayList<Words>();
 
-        words.add(new Words("red","wetetti" ));
-        words.add(new Words("mustard yellow","chiwiita"));
-        words.add(new Words("dusty yellow","topiisa"));
-        words.add(new Words("green","chokokki"));
-        words.add(new Words("brown","takaakki"));
-        words.add(new Words("gray","topoppi"));
-        words.add(new Words("black","kululli"));
-        words.add(new Words("white","kelilli"));
+        words.add(new Words("red", "wetetti", R.drawable.color_red));
+        words.add(new Words("mustard yellow", "chiwiita", R.drawable.color_mustard_yellow));
+        words.add(new Words("dusty yellow", "topiisa", R.drawable.color_dusty_yellow));
+        words.add(new Words("green", "chokokki", R.drawable.color_green));
+        words.add(new Words("brown", "takaakki", R.drawable.color_brown));
+        words.add(new Words("gray", "topoppi", R.drawable.color_gray));
+        words.add(new Words("black", "kululli", R.drawable.color_black));
+        words.add(new Words("white", "kelilli", R.drawable.color_white));
 
         ListView listView = findViewById(R.id.numberListV);
 
