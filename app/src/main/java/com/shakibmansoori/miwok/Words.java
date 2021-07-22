@@ -12,11 +12,10 @@ public class Words {
     private static final int NO_IMAGE_PROVIDED = -1;
 
 
-    public Words(String defaultTranslation, String miwokTranslation, int mimageResourceId) {
+    public Words(String defaultTranslation, String miwokTranslation, int audioResourceID) {
         mDefaultTranslation = defaultTranslation;
         mMiwokTranslation = miwokTranslation;
-        mImageResourceId = mimageResourceId;
-//        mAudioResourceID = audioResourceId;
+        mAudioResourceID = audioResourceID;
     }
 
     public Words(String defaultTranslation, String miwokTranslation, int imageResourceId, int audioResourceId) {
