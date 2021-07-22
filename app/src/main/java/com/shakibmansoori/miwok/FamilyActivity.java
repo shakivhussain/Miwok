@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -44,10 +45,25 @@ public class FamilyActivity extends AppCompatActivity {
                 Words word = words.get(position);
                 mediaPlayer = MediaPlayer.create(getApplicationContext(), word.getAudioResourceId());
                 mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        releaseMediaPlayer();
+                    }
+                });
 
             }
         });
 
 
+    }
+
+    private void releaseMediaPlayer() {
+
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+
+            mediaPlayer = null;
+        }
     }
 }
