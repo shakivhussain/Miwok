@@ -31,7 +31,7 @@ public class FamilyActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.numberListV);
 
         // we cant implement custom arraylist to the default adapter , so create custom arraAdapter
-        WordsAdapter adapter = new WordsAdapter(this, words);
+        WordsAdapter adapter = new WordsAdapter(this, words, R.color.category_family);
         listView.setAdapter(adapter);
 
     }

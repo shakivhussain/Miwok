@@ -9,14 +9,17 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+
 import java.util.ArrayList;
 
 public class WordsAdapter extends ArrayAdapter<Words> {
     private int mColorResourceId;
 
-    public WordsAdapter(Activity context, ArrayList<Words> words) {
+    public WordsAdapter(Activity context, ArrayList<Words> words, int colorResourceId) {
 
         super(context, 0, words);
+        mColorResourceId = colorResourceId;
     }
 
     @Override
@@ -43,13 +46,18 @@ public class WordsAdapter extends ArrayAdapter<Words> {
 
         ImageView imageView = listItemView.findViewById(R.id.image);
 
-        if (currentWord.hasImage()){
+        if (currentWord.hasImage()) {
             imageView.setImageResource(currentWord.getImageResourceId());
             imageView.setVisibility(View.VISIBLE);
-        }else {
+        } else {
 
             imageView.setVisibility(View.GONE);
         }
+
+        View textContainer = listItemView.findViewById(R.id.text_container);
+        int color = ContextCompat.getColor(getContext(), mColorResourceId);
+
+        textContainer.setBackgroundColor(color);
 
 
         return listItemView;
